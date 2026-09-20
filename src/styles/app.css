@@ -338,19 +338,3 @@ a.btn { text-decoration: none; text-align: center; display: inline-flex; align-i
   font-size: 0.72rem;
   cursor: pointer;
 }
-.intro-tap {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: max-content;
-  height: max-content;
-  background: rgba(12,11,10,0.82);
-  border: 1px solid rgba(212,175,95,0.55);
-  color: #f4efe6;
-  border-radius: 999px;
-  padding: 16px 28px;
-  font-family: var(--display);
-  font-size: 1.25rem;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-}

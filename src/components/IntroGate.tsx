@@ -12,23 +12,18 @@ export function IntroGate({ children }: Props) {
       return true;
     }
   });
-  const [needsTap, setNeedsTap] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (!show) return;
     const v = videoRef.current;
     if (!v) return;
-    v.muted = false;
-    const p = v.play();
-    if (p && typeof p.then === 'function') {
-      p.catch(() => {
-        // Autoplay with sound blocked — mute + play, or ask for tap
-        v.muted = true;
-        v.play().catch(() => setNeedsTap(true));
-        setNeedsTap(true);
-      });
-    }
+    // Browsers allow muted autoplay; start muted so it always plays with no tap gate
+    v.muted = true;
+    v.defaultMuted = true;
+    void v.play().catch(() => {
+      /* if play still fails, Skip remains available */
+    });
   }, [show]);
 
   function finish() {
@@ -38,17 +33,6 @@ export function IntroGate({ children }: Props) {
       /* ignore */
     }
     setShow(false);
-  }
-
-  function startWithSound() {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = false;
-    void v.play().then(() => setNeedsTap(false)).catch(() => {
-      v.muted = true;
-      void v.play();
-      setNeedsTap(false);
-    });
   }
 
   if (!show) return <>{children}</>;
@@ -62,14 +46,11 @@ export function IntroGate({ children }: Props) {
         className="intro-video"
         src={src}
         playsInline
+        muted
+        autoPlay
         preload="auto"
         onEnded={finish}
       />
-      {needsTap && (
-        <button type="button" className="intro-tap" onClick={startWithSound}>
-          Tap to begin
-        </button>
-      )}
       <button type="button" className="intro-skip" onClick={finish}>
         Skip
       </button>
