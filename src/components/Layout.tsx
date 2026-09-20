@@ -16,7 +16,7 @@ export function Layout() {
   return (
     <div className="app-shell">
       <div className="topbar">
-        <div className="eyebrow">RIGHT NOW</div>
+        <div className="eyebrow">E*PRAY</div>
         <button className="pill" type="button" onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}>
           {theme === 'dark' ? 'Light' : 'Dark'}
         </button>

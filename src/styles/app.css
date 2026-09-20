@@ -307,3 +307,50 @@ textarea.field { min-height: 88px; resize: vertical; }
 .scripture { font-family: var(--display); font-size: 1.28rem; line-height: 1.45; }
 
 a.btn { text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; }
+
+/* E*PRAY cinematic intro */
+.intro-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+.intro-skip {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(212,175,95,0.45);
+  color: #e6d3a3;
+  border-radius: 999px;
+  padding: 8px 16px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.intro-tap {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: max-content;
+  height: max-content;
+  background: rgba(12,11,10,0.82);
+  border: 1px solid rgba(212,175,95,0.55);
+  color: #f4efe6;
+  border-radius: 999px;
+  padding: 16px 28px;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}

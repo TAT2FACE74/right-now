@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BOOKS, fetchPassage } from '../lib/bibleApi';
 import { loadStore, saveStore } from '../lib/storage';
+import { speakPastor } from '../lib/speak';
 
 export function Bible() {
   const [book, setBook] = useState('John');
@@ -100,11 +101,7 @@ export function Bible() {
             <button
               type="button"
               className="btn btn-ghost"
-              onClick={() => {
-                if (!window.speechSynthesis) return;
-                window.speechSynthesis.cancel();
-                window.speechSynthesis.speak(new SpeechSynthesisUtterance(result.text));
-              }}
+              onClick={() => { if (result) void speakPastor(result.text); }}
             >
               Listen
             </button>

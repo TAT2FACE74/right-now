@@ -9,6 +9,7 @@ import {
 } from '../data/feelings';
 import { buildPrayer, type PrayerStyle } from '../lib/prayer';
 import { bumpStreak, loadStore, saveStore } from '../lib/storage';
+import { speakPastor } from '../lib/speak';
 
 export function Moment() {
   const [params] = useSearchParams();
@@ -62,11 +63,8 @@ export function Moment() {
   }
 
   function speakPrayer() {
-    if (!prayer || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(prayer);
-    u.rate = 0.9;
-    window.speechSynthesis.speak(u);
+    if (!prayer) return;
+    void speakPastor(prayer);
   }
 
   return (

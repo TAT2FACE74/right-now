@@ -80,7 +80,7 @@ export function Home() {
       </section>
 
       <p className="disclaimer">
-        RIGHT NOW helps you find Scripture and pray. It does not replace God, the Bible, pastors,
+        E*PRAY helps you find Scripture and pray. It does not replace God, the Bible, pastors,
         counselors, medical care, or emergency services. If you are in crisis, contact local
         emergency help or a trusted person immediately.
       </p>

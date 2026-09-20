@@ -6,9 +6,11 @@ import { Bible } from './pages/Bible';
 import { Pray } from './pages/Pray';
 import { Plans } from './pages/Plans';
 import { Profile } from './pages/Profile';
+import { IntroGate } from './components/IntroGate';
 
 export default function App() {
   return (
+    <IntroGate>
     <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "") || "/"}>
       <Routes>
         <Route element={<Layout />}>
@@ -22,5 +24,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </IntroGate>
   );
 }

@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { PASSAGES_BY_FEELING } from '../data/feelings';
 import { buildPrayer } from '../lib/prayer';
 import { bumpStreak, loadStore, saveStore } from '../lib/storage';
+import { speakPastor } from '../lib/speak';
 
 export function Pray() {
   const [params] = useSearchParams();
@@ -50,11 +51,7 @@ export function Pray() {
           <button
             type="button"
             className="btn btn-ghost"
-            onClick={() => {
-              if (!window.speechSynthesis) return;
-              window.speechSynthesis.cancel();
-              window.speechSynthesis.speak(new SpeechSynthesisUtterance(body));
-            }}
+            onClick={() => { void speakPastor(body); }}
           >
             Pray aloud
           </button>
