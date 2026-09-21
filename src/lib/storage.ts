@@ -1,5 +1,7 @@
 const KEY = 'right-now-v1';
 
+export type ReadingPlace = { book: string; chapter: number; verse: number };
+
 export type Store = {
   name: string;
   streak: number;
@@ -7,6 +9,7 @@ export type Store = {
   bookmarks: { ref: string; text: string; savedAt: string }[];
   prayers: { id: string; body: string; label: string; at: string }[];
   theme: 'dark' | 'light';
+  readingPlace?: ReadingPlace;
 };
 
 const defaults: Store = {
